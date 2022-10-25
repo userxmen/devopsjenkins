@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('station rabat') {
+            steps {
+                echo 'hello station rabat'
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adamhalasz/docker-node-example.git']]])
+            }
+        }
+        stage('station casa') {
+            steps {
+                echo 'hello station casa'
+                sh 'ls -al'
+            }
+        }
+        stage('station agadir') {
+            steps {
+                echo 'Hello station agadir'
+            }
+        }
+    }
+}
